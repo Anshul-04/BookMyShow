@@ -22,6 +22,7 @@ public class UserService {
                          We can set the attributes in one line only.
 
             Eg :- User user = User.builder().age(userEntryDto.getAge()).build();
+              --> This is a Converter,instead of use new keyword we are using this path
          */
 
         User userEntity = User.builder().age(userEntryrDto.getAge()).name(userEntryrDto.getName()).email(userEntryrDto.getEmail()).mobileNumber(userEntryrDto.getMobileNumber()).address(userEntryrDto.getAddress()).build();
