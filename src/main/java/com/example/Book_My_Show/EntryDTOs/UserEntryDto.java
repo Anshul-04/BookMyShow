@@ -1,9 +1,9 @@
-package com.example.Book_My_Show.DTOs;
+package com.example.Book_My_Show.EntryDTOs;
 
 import lombok.Data;
 
 @Data
-public class UserEntryrDto {
+public class UserEntryDto {
 
     private String name;
     private String email;
@@ -11,6 +11,6 @@ public class UserEntryrDto {
     private  String mobileNumber;
     private  String address;
 
-    public UserEntryrDto() {
+    public UserEntryDto() {
     }
 }
