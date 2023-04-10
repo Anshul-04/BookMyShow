@@ -39,3 +39,8 @@ public class User {
 
 
 }
+/*
+ 
+It is mandotory to also write @AllArgsConstructor with @Builder
+ 
+ */

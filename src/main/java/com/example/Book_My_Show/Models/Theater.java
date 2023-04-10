@@ -26,7 +26,7 @@ public class Theater {
     // BI-DIRECTIONAL MAPPING
     //Theater is parent wrt Show
     @OneToMany(mappedBy = "theater",cascade = CascadeType.ALL)
-    private List<Show> listOfShows = new ArrayList<>();
+    private List<Show> showList = new ArrayList<>();
 
     //Theater is parent wrt TheaterSeat
     @OneToMany(mappedBy = "theater",cascade = CascadeType.ALL)

@@ -25,8 +25,8 @@ public class TheaterController {
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         }
         catch (Exception e){
-            String response = "Theater can not be Added";
-            return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
     }
 }

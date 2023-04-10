@@ -27,8 +27,8 @@ public class UserController {
             String response = userService.addUser(userEntryDto);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         }catch (Exception e){
-            String result = "User can not be added";
-            return new ResponseEntity<>(result,HttpStatus.BAD_REQUEST);
+            String response = "User can not be added";
+            return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
         }
     }
 }

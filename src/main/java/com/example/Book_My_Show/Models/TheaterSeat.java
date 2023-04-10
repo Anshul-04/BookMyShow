@@ -18,10 +18,10 @@ public class TheaterSeat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String seatNumber;
+    private String seatNumber; // like 1A ,2B, ..
 
     @Enumerated(value=EnumType.STRING)
-    private SeatType seatType;
+    private SeatType seatType;  // like classic,Premium
 
     // UNI-DIRECTIONAL MAPPING
     //TheaterSeat is child wrt Theater

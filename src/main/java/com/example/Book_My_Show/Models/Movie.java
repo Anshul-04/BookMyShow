@@ -39,7 +39,7 @@ public class Movie {
     // BI-DIRECTIONAL MAPPING
     //Movie is parent wrt Show
     @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL)
-    private List<Show> listOfShows = new ArrayList<>();
+    private List<Show> showList = new ArrayList<>();
 
 
 
