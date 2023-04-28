@@ -46,6 +46,7 @@ public class ShowService {
         //setting Bi-directional foreign key attribute the listOfShowSeatsEnity
         List<ShowSeat>  showSeatList = creatShowSeatList(showEntryDto,showEntity);
         showEntity.setListOfShowSeat(showSeatList);
+        showRepository.save(showEntity);
 
         //Now we also need to update Parent Entites
         // As Movie & Theater also contain showList so we need to update it
@@ -76,9 +77,10 @@ public class ShowService {
         1. We are creating TheaterSeatList and for each theaterSeat we are creating ShowSeat and setting its attributes
            like seatNo,seatType and seatPrice.
         2. TheaterSeat are actually physical Seat and ShowSeat are virtual seats for particular show.
-           so we are trying to set physical seat value equals to virtual seat by setting all its required values,for each particular show
-        3. As Theater already contain theaterSeatList so we can get it from there
-        4.For  Theater entity  we can get it by showEntity
+           so we are trying to set physical seat value equals to virtual seat by setting all its required values,
+           for each particular show.
+        3. As Theater already contain theaterSeatList ,so we can get it from there.
+        4. For  Theater entity  we can get it by showEntity.
 
          */
 
@@ -88,15 +90,16 @@ public class ShowService {
         // we can get theaterSeatList from Theater as it's already have it.
         List<TheaterSeat> theaterSeatList = theaterEntity.getTheaterSeatList();
 
-        List<ShowSeat> showSeatList = new ArrayList<>();
+        List<ShowSeat> showSeatList = new ArrayList<ShowSeat>();
 
-        //here we need theaterSeat because it already have info about seatNo,seatType
+        //here we need theaterSeat because it already has info about seatNo,seatType
         for(TheaterSeat theaterSeat : theaterSeatList){
             //We need to create ShowSeat Entity ,we can use new keyword or @Builder method for it
 
             ShowSeat showSeat = new ShowSeat();
 
             //setting all its attributes
+            // here we are setting value for each attributes of showseat(virtual) wrt theaterSeat(real)
             showSeat.setSeatNumber(theaterSeat.getSeatNumber());
             showSeat.setSeatType(theaterSeat.getSeatType());
 
@@ -109,12 +112,28 @@ public class ShowService {
             }
 
             showSeat.setBooked(false);
+
             //also set Show(parent) which is foreign key attribute
             showSeat.setShow(showEntity);
 
             //finally adding it to the list
             showSeatList.add(showSeat);
         }
+
+        /* Or we can do like this
+
+        for(TheatreSeatEntity theatreSeatEntity : theatreSeatEntityList) {
+            ShowSeatEntity seat = ShowSeatEntity.builder().seatsNo(theatreSeatEntity.getSeatNo())
+                        .seatTypes(theatreSeatEntity.getSeatType()).theatreSeatEntity(theatreSeatEntity)
+                        .seatPrice(show.getSeatPrice()).showEntity(show).isBooked(false).build();
+            showSeatList.add(seat);
+        }
+
+
+        */
+
         return showSeatList;
+
+
     }
 }

@@ -23,11 +23,11 @@ public class ShowSeat {
 
     private String seatNumber;  // 1A,10B
 
-    private boolean isBooked;
+    private boolean isBooked; 
 
     private int seatPrice;  //price for a particular seat
 
-    private Date bookedAt;  //time of the seat booked
+    private Date bookedAt;  //time of the seat booked(eg seat booked at "2023-04-30" Date)
 
     @Enumerated(value = EnumType.STRING)
     private SeatType seatType;

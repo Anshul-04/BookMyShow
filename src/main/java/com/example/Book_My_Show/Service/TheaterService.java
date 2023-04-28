@@ -41,12 +41,12 @@ public class TheaterService {
 
         // Setting all attributes of Theater before saving
         /*
-          In theater name,location attributes are sent from postman so, we don't need to set them.
+          In theater {name,location} attributes are sent from postman so, we don't need to set them.
           But we have foreign key also we need to set them .Here we're only setting TheaterSeatList for now.
 
           In below list createTheaterSeatList(theaterEntryDto,theater) method we are also passing theater as parameter
-          because in TheaterSeat entity we have to set all its attribute like seatNumber,seatType and theater(which is foreign key)
-          that's why we are passing theater too.
+          because in TheaterSeat entity we have to set all its attribute like seatNumber,seatType and theater
+          (which is foreign key) that's why we are passing theater too.
          */
         List<TheaterSeat> theaterSeatList = createTheaterSeatList(theaterEntryDto,theater); //this method is below 
         theater.setTheaterSeatList(theaterSeatList);

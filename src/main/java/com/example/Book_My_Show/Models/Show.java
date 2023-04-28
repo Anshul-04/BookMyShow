@@ -58,7 +58,7 @@ public class Show {
     // BI-DIRECTIONAL MAPPING
     // Show is parent wrt Ticket
     @OneToMany(mappedBy = "show",cascade = CascadeType.ALL)
-    private List<Ticket> ticketList = new ArrayList<>();
+    private List<Ticket> bookedTicketList = new ArrayList<>();
 
     // Show is parent wrt ShowSeat
     @OneToMany(mappedBy = "show",cascade = CascadeType.ALL)
